@@ -36,4 +36,5 @@ See [the sample input file](./sample-input.txt); this is a line-by-line descript
 
 1. Number of page faults (PF)
 2. Memory frames' contents after each page request (trace)
+
 	> For the clock algorithm, the trace contains use-bit (*) and pointer (->) indicators.
