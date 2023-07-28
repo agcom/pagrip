@@ -12,11 +12,11 @@ fun clck(refs: List<Int>, framesQuantity: Int): Pair<Int, List<Pair<Array<Pair<I
 	var lastFramePointer = 0
 	val pages = HashMap<Int, Int?>() // Page table
 	val framesContains = HashSet<Int>(framesQuantity) // Efficient `contains`
-
+	
 	var pageFaults = 0
 	val trace = mutableListOf<Pair<Array<Pair<Int, Boolean>?>, Int>>()
 	trace += frames.copyOf() to lastFramePointer
-
+	
 	refs.forEach { ref ->
 		if (ref !in framesContains) {
 			pageFaults++
@@ -43,9 +43,9 @@ fun clck(refs: List<Int>, framesQuantity: Int): Pair<Int, List<Pair<Array<Pair<I
 			val frame = pages[ref]!!
 			frames[frame] = ref to true
 		}
-
+		
 		trace += frames.copyOf() to (if (lastFramePointer + 1 == framesQuantity) 0 else lastFramePointer + 1)
 	}
-
+	
 	return pageFaults to trace
 }

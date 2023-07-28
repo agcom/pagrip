@@ -22,8 +22,8 @@ fun readInput() {
 		pRefs = readln().split(delim)
 			.map { requireNotNull(it.toIntOrNull()) { "each page reference must be a 32-bit integer (was $it)" } }
 			.onEach { require(it >= 1) { "each page reference must be greater than or equal to 1 (was $it)" } }
-
-		pFramesQuantity = readln().let { requireNotNull(it.toIntOrNull()) { "frames quantity must be a 32-bit integer" } }
+		
+		pFramesQuantity = requireNotNull(readln().toIntOrNull()) { "frames quantity must be a 32-bit integer" }
 			.also { require(it > 0) { "frames quantity must be positive" } }
 	}
 }
